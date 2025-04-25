@@ -1,0 +1,33 @@
+ALGORITHM CHECH_POINT_ALGO
+VAR
+    Phrase : STRING;
+    longueur_PH,NB_Mots,NB_Voyelles,i : INTEGER := 0;
+BEGIN
+    Write ("Entrez une phrase se terminant par un point :");
+    Read (phrase);
+    
+    WHILE (phrase[i]=" ") DO
+          i := i + 1;
+    END_WHILE
+
+    WHILE (phrase[i]<> ".") DO
+          longueur_PH := longueur_PH + 1;
+        
+        IF (phrase[i]=" ") THEN
+          NB_Mots := NB_Mots + 1;
+        END_IF
+
+        IF (phrase[i+1]=".") THEN
+          NB_Mots := NB_Mots + 1;
+        END_IF
+
+        IF (Upper(phrase[i]) in [A,E,I,O,U,Y]) THEN
+            NB_Voyelles := NB_Voyelles + 1;
+        END_IF
+        i := i + 1;
+    END_WHILE
+    Write ("Longueur de la phrase :",longueur_PH);
+    Write ("Nombre de mots :",NB_Mots);
+    Write ("Nombre de voyelles :",NB_Voyelles);
+       
+END 
