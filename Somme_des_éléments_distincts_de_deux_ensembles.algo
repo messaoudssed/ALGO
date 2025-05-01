@@ -1,0 +1,39 @@
+ALGORITHM SOMME_ELEMENTS_DISTINCTS
+VAR
+    set1, set2 : ARRAY OF INTEGER := [3, 1, 7, 9], [2, 4, 1, 9, 3];
+    union : ARRAY OF INTEGER;
+    i, j, n1, n2, somme : INTEGER := 0;
+    existe : BOOLEAN;
+BEGIN
+    n1 := LENGTH(set1);
+    n2 := LENGTH(set2);
+    somme := 0;
+
+    -- Ajouter les éléments uniques de set1
+    FOR i FROM 0 TO n1 - 1 DO
+        existe := FALSE;
+        FOR j FROM 0 TO n2 - 1 DO
+            IF set1[i] = set2[j] THEN
+                existe := TRUE;
+            END_IF
+        END_FOR
+        IF NOT existe THEN
+            somme := somme + set1[i];
+        END_IF
+    END_FOR
+
+    -- Ajouter les éléments uniques de set2
+    FOR i FROM 0 TO n2 - 1 DO
+        existe := FALSE;
+        FOR j FROM 0 TO n1 - 1 DO
+            IF set2[i] = set1[j] THEN
+                existe := TRUE;
+            END_IF
+        END_FOR
+        IF NOT existe THEN
+            somme := somme + set2[i];
+        END_IF
+    END_FOR
+
+    Write("La somme des éléments distincts est : ", somme);
+ END_ALGORITHM
